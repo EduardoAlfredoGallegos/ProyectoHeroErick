@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="warning">
+    <ion-title color="primary">
+      CoronaCrud de MCoC
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card button [routerLink]="['/hero-detalles', h.id]" color="light" *ngFor="let h of heroe">
+    <ion-card-header>
+      <ion-card-subtitle>{{h.nombre}}</ion-card-subtitle>
+      <ion-card-title detail>{{h.alterego}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-icon size="large" *ngIf="h.clase=== 'Cósmico'" name="planet-outline" color="secondary"></ion-icon>
+      <ion-icon size="large" *ngIf="h.clase=== 'Tecnológico'" name="git-pull-request-outline" color="primary"></ion-icon>
+      <ion-icon size="large" *ngIf="h.clase=== 'Científico'" name="flask-outline" color="success"></ion-icon>
+      <ion-icon size="large" *ngIf="h.clase=== 'Místico'" name="help-buoy-outline" color="tertiary"></ion-icon>
+      <ion-icon size="large" *ngIf="h.clase=== 'Hábil'" name="hand-left-outline" color="danger"></ion-icon>
+      <ion-icon size="large" *ngIf="h.clase=== 'Mutante'" name="fitness-outline" color="warning"></ion-icon>
+      <br>Edad: {{h.edad}}<br>{{h.vivomuerto}}
+    </ion-card-content>
+  </ion-card>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="danger" routerLink="/hero-detalles">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+

@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="warning">
+    <ion-title>Detalles heroicos</ion-title>
+    <ion-button color="danger" slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="full">
+    <ion-item>
+      <ion-input required type="text" placeholder="Nombre" [(ngModel)]="heroe.nombre">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input required type="text" placeholder="Alterego" [(ngModel)]="heroe.alterego">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input required type="number" placeholder="Edad" [(ngModel)]="heroe.edad">
+      </ion-input>
+    </ion-item>
+    <ion-item >
+      <ion-label>Clase</ion-label>
+      <ion-select interface="popover" [(ngModel)]="heroe.clase" okText="Okay" cancelText="Dismiss">
+          <ion-select-option value="Hábil">Hábil</ion-select-option>
+          <ion-select-option value="Cósmico">Cósmico</ion-select-option>
+          <ion-select-option value="Mutante">Mutante</ion-select-option>
+          <ion-select-option value="Místico">Místico</ion-select-option>
+          <ion-select-option value="Científico">Científico</ion-select-option>
+          <ion-select-option value="Tecnológico">Tecnológico</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item >
+      <ion-label>Estado de Vida</ion-label>
+      <ion-select interface="popover" [(ngModel)]="heroe.vivomuerto" okText="Okay" cancelText="Dismiss">
+          <ion-select-option value="Vivo">Vivo</ion-select-option>
+          <ion-select-option value="Muerto">Muerto</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-button [disabled]="!heroe.nombre || !heroe.alterego || !heroe.edad || !heroe.clase || !heroe.vivomuerto" expand="full" (click)="guardarHeroe()" color="success">
+    Guardar
+  </ion-button>
+  <ion-fab *ngIf="heroeId" vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button (click)="remove(heroeId)"color="danger">
+      <ion-icon name="trash"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
